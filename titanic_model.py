@@ -134,6 +134,11 @@ def add_features(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_preprocessor() -> ColumnTransformer:
+    try:
+        one_hot_encoder = OneHotEncoder(handle_unknown="ignore", sparse_output=False)
+    except TypeError:
+        one_hot_encoder = OneHotEncoder(handle_unknown="ignore", sparse=False)
+
     numeric_features = [
         "Pclass",
         "Age",
@@ -155,10 +160,7 @@ def build_preprocessor() -> ColumnTransformer:
     categorical_pipeline = Pipeline(
         steps=[
             ("imputer", SimpleImputer(strategy="most_frequent")),
-            (
-                "encoder",
-                OneHotEncoder(handle_unknown="ignore", sparse=False),
-            ),
+            ("encoder", one_hot_encoder),
         ]
     )
 
