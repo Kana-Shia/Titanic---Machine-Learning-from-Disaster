@@ -8,6 +8,32 @@
 
 ---
 
+## 快速開始（已在本 Repository 實測）
+
+### 1) 安裝
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 2) 執行完整流程
+
+請在 Repository 根目錄執行：
+
+```bash
+python titanic_model.py
+```
+
+### 3) 執行後產出
+
+- `reports/data_summary.csv`：三個 CSV 的欄位、型別、筆數與缺失值摘要
+- `reports/model_comparison.csv`：模型比較結果
+- `outputs/submission.csv`：Kaggle 提交檔
+
+---
+
 ## 1. 專案目標
 
 本專案需要根據 Titanic 乘客資料，預測每一位乘客是否在事故中生還。
